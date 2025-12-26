@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: pgmigrate
+Version: 0.1.0
+Requires-Dist: Click
+Requires-Dist: psycopg2-binary
+Requires-Dist: python-dotenv
+Dynamic: requires-dist

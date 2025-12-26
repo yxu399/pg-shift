@@ -1,0 +1,13 @@
+setup.py
+pgmigrate.egg-info/PKG-INFO
+pgmigrate.egg-info/SOURCES.txt
+pgmigrate.egg-info/dependency_links.txt
+pgmigrate.egg-info/entry_points.txt
+pgmigrate.egg-info/requires.txt
+pgmigrate.egg-info/top_level.txt
+src/__init__.py
+src/commands.py
+src/config.py
+src/db.py
+src/main.py
+src/utils.py

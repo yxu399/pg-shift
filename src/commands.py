@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 import click
 import datetime
 import secrets
@@ -58,7 +59,7 @@ def init():
 @click.argument('name')
 def make(name):
     """Generates a new migration file pair."""
-    timestamp = datetime.datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    timestamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d%H%M%S")
     suffix = secrets.token_hex(2)
     safe_name = "".join(c if c.isalnum() else "_" for c in name).strip("_")
     base_filename = f"{timestamp}_{suffix}_{safe_name}"
@@ -167,6 +168,7 @@ def up(dry_run):
 
     except Exception as e:
         click.secho(f"\n❌ Error: {e}", fg="red")
+        sys.exit(1)
     finally:
         if not dry_run:
             try: db.release_lock()
@@ -237,6 +239,7 @@ def down(dry_run):
 
     except Exception as e:
         click.secho(f"\n❌ Error: {e}", fg="red")
+        sys.exit(1)
     finally:
         if not dry_run:
             try: db.release_lock()
